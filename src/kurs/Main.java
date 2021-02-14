@@ -44,7 +44,11 @@ public class Main {
                     "" + (4950000000L + new Random().nextInt(10000000)));
         }
         for (int i = 0; i < 10; i++) {
-            phoneBook.get(words[random.nextInt(words.length)]);
+            String word = words[random.nextInt(words.length)];
+            System.out.print("brute force: ");
+            phoneBook.getBruteForce(word);
+            System.out.print("index+last of: ");
+            phoneBook.get(word);
         }
 
     }

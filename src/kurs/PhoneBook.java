@@ -11,6 +11,28 @@ public class PhoneBook {
     }
 
     public void get(String name) {
+        PhoneBookEntry temp = new PhoneBookEntry(name, "");
+        int startIndex = list.indexOf(temp);
+        if (startIndex == -1) {
+            System.out.println(name + ": телефон не найден");
+            return;
+        }
+        int lastIndex = list.lastIndexOf(temp);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = startIndex; i <= lastIndex; i++) {
+            temp = list.get(i);
+            if (!name.equals(temp.getName())) {
+                continue;
+            }
+            if (stringBuilder.length() != 0) {
+                stringBuilder.append(", ");
+            }
+            stringBuilder.append(temp.getPhone());
+        }
+        System.out.println(name + ": " + stringBuilder.toString());
+    }
+
+    public void getBruteForce(String name) {
         StringBuilder stringBuilder = new StringBuilder();
         int count = 0;
         for (PhoneBookEntry phoneBookEntry: list) {
