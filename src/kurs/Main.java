@@ -37,6 +37,7 @@ public class Main {
         separateClassWay.run();
 
         //телефонная книга
+        System.out.println("\n----- телефонная книга -----");
         PhoneBook phoneBook = new PhoneBook();
         Random random = new Random();
         for (int i = 0; i < 20; i++) {
