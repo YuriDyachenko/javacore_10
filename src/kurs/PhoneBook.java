@@ -1,5 +1,7 @@
 package kurs;
-
+/*
+класс ТЕЛЕФОННАЯ КНИГА
+*/
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class PhoneBook {
         list.add(new PhoneBookEntry(name, phone));
     }
 
+    //поиск телефонов с использованием indexOf() и lastIndexOf()
     public void get(String name) {
         PhoneBookEntry temp = new PhoneBookEntry(name, "");
         int startIndex = list.indexOf(temp);
@@ -32,20 +35,19 @@ public class PhoneBook {
         System.out.println(name + ": " + stringBuilder.toString());
     }
 
+    //поиск телефонов перебором
     public void getBruteForce(String name) {
         StringBuilder stringBuilder = new StringBuilder();
-        int count = 0;
         for (PhoneBookEntry phoneBookEntry: list) {
             if (!name.equals(phoneBookEntry.getName())) {
                 continue;
             }
-            if (count != 0) {
+            if (stringBuilder.length() != 0) {
                 stringBuilder.append(", ");
             }
-            count++;
             stringBuilder.append(phoneBookEntry.getPhone());
         }
-        if (count == 0) {
+        if (stringBuilder.length() == 0) {
             System.out.println(name + ": телефон не найден");
         } else {
             System.out.println(name + ": " + stringBuilder.toString());

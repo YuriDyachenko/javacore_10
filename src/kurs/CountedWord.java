@@ -1,7 +1,7 @@
 package kurs;
-
-import java.util.Objects;
-
+/*
+класс СЛОВО СО СЧЕТЧИКОМ
+*/
 public class CountedWord {
     private final String word;
     private int count;
@@ -11,17 +11,13 @@ public class CountedWord {
         this.count = 1;
     }
 
+    //переопределяем, чтобы indexOf искал только по слову без учета счетчика
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CountedWord that = (CountedWord) o;
         return word.equals(that.word);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(word);
     }
 
     @Override
@@ -41,6 +37,7 @@ public class CountedWord {
         return word;
     }
 
+    //для сортировки по убыванию счетчика
     public int compareDescendingCounter(CountedWord that) {
         int thatCount = that.getCount();
         if (count == thatCount) {

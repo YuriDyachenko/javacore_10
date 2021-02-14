@@ -1,7 +1,7 @@
 package kurs;
-
-import java.util.Objects;
-
+/*
+класс ЗАПИСЬ ТЕЛЕФОННОЙ КНИГИ
+*/
 public class PhoneBookEntry {
     private final String name;
     private final String phone;
@@ -19,16 +19,12 @@ public class PhoneBookEntry {
         return phone;
     }
 
+    //переопределяем, чтобы indexOf/lastIndexOf искали только по слову без учета счетчика
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhoneBookEntry that = (PhoneBookEntry) o;
         return name.equals(that.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
     }
 }

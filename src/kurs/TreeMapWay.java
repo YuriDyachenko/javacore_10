@@ -22,7 +22,7 @@ public class TreeMapWay {
                 uniqueWords.put(word, count + 1);
             }
         }
-        System.out.println("\n----- используем HashMap<String, Integer> -----");
+        System.out.println("\n----- используем TreeMap<String, Integer> -----");
         System.out.println("Всего слов в массиве = " + words.length);
         System.out.println("Уникальных слов в массиве = " + uniqueWords.size());
         System.out.println("Сколько раз встречается каждое слово:");

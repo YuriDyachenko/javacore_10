@@ -45,11 +45,12 @@ public class Main {
         }
         for (int i = 0; i < 10; i++) {
             String word = words[random.nextInt(words.length)];
-            System.out.print("brute force: ");
+            //поиск телефонов перебором
+            System.out.print("brute force -> ");
             phoneBook.getBruteForce(word);
-            System.out.print("index+last of: ");
+            //поиск с использованием indexOf() + lastIndexOf()
+            System.out.print("index&last  -> ");
             phoneBook.get(word);
         }
-
     }
 }
