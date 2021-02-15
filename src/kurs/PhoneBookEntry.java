@@ -19,12 +19,12 @@ public class PhoneBookEntry {
         return phone;
     }
 
-    //переопределяем, чтобы indexOf/lastIndexOf искали только по имени без учета телефона
+    //переопределяем, чтобы contains и indexOf искали запись целиком
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhoneBookEntry that = (PhoneBookEntry) o;
-        return name.equals(that.name);
+        return name.equals(that.getName()) && phone.equals(that.getPhone());
     }
 }

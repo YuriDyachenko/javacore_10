@@ -14,7 +14,6 @@ public class SeparateClassWay {
 
     public void run() {
         List<CountedWord> list = new ArrayList<>();
-
         for (String word: words) {
             CountedWord countedWord = new CountedWord(word);
             int position = list.indexOf(countedWord);

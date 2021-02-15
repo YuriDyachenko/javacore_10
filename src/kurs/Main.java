@@ -37,22 +37,31 @@ public class Main {
         SeparateClassWay separateClassWay = new SeparateClassWay(WORDS);
         separateClassWay.run();
 
-        System.out.println("\n----- телефонная книга, используем ArrayList -----");
+        //для двух вариантов решения сразу создаем объекты, чтобы добавить в них
+        //одинаковые данные и сравнивать потом работу get
         PhoneBook phoneBook = new PhoneBook();
-        for (int i = 0; i < 20; i++) {
-            phoneBook.add(randomWord(), randomPhone());
-        }
-        for (int i = 0; i < 10; i++) {
-            phoneBook.get(randomWord());
-        }
-
-        System.out.println("\n----- телефонная книга, используем TreeMap<String, TreeSet<String>> -----");
         TreeMapPhoneBook treeMapPhoneBook = new TreeMapPhoneBook();
+        //заполняем обе книги одинаковыми значениями
         for (int i = 0; i < 20; i++) {
-            treeMapPhoneBook.add(randomWord(), randomPhone());
+            String word = randomWord();
+            String phone = randomPhone();
+            phoneBook.add(word, phone);
+            treeMapPhoneBook.add(word, phone);
         }
-        for (int i = 0; i < 10; i++) {
-            treeMapPhoneBook.get(randomWord());
+        //создаем и заполняе массив для тестирования get
+        String[] testWords = new String[10];
+        for (int i = 0; i < testWords.length; i++) {
+            testWords[i] = randomWord();
+        }
+        //поиск в первой книге
+        System.out.println("\n----- телефонная книга, используем ArrayList -----");
+        for (String testWord : testWords) {
+            phoneBook.get(testWord);
+        }
+        //поиск во второй книге
+        System.out.println("\n----- телефонная книга, используем TreeMap<String, TreeSet<String>> -----");
+        for (String testWord : testWords) {
+            treeMapPhoneBook.get(testWord);
         }
     }
 
