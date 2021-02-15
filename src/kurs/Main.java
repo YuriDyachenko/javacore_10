@@ -13,45 +13,54 @@ import java.util.Random;
 
 public class Main {
 
+    private static final String[] WORDS = {"ангельская", "божественная", "безупречная",
+            "жизнерадостная", "бескорыстная", "божественная", "весёлая", "великолепная", "безупречная",
+            "завораживающая", "ангельская", "жизнерадостная", "восхитительная", "завораживающая",
+            "волнительная", "грациозная", "добрая", "безупречная", "душевная", "ангельская",
+            "божественная", "завораживающая", "дивная", "единственная", "желанная", "жизнерадостная",
+            "заботливая", "загадочная", "божественная", "жизнерадостная", "завораживающая",
+            "застенчивая", "зажигательная", "изысканная", "бесподобная", "завораживающая"};
+    private static final Random random = new Random();
+
     public static void main(String[] args) {
 
-        String[] words = {"ангельская", "божественная", "безупречная", "завораживающая", "бесподобная",
-                "жизнерадостная", "бескорыстная", "божественная", "весёлая", "великолепная", "безупречная",
-                "завораживающая", "ангельская", "жизнерадостная", "восхитительная", "завораживающая",
-                "волнительная", "грациозная", "добрая", "безупречная", "душевная", "ангельская",
-                "божественная", "завораживающая", "дивная", "единственная", "желанная", "жизнерадостная",
-                "заботливая", "загадочная", "божественная", "жизнерадостная", "завораживающая",
-                "застенчивая", "зажигательная", "изысканная"};
-
         //используем HashMap, но список слов не отсортирован, трудно понять, есть там повторения или нет
-        HashMapWay hashMapWay = new HashMapWay(words);
+        HashMapWay hashMapWay = new HashMapWay(WORDS);
         hashMapWay.run();
 
         //используем, теперь список слов в алфавитном порядке
-        TreeMapWay treeMapWay = new TreeMapWay(words);
+        TreeMapWay treeMapWay = new TreeMapWay(WORDS);
         treeMapWay.run();
 
         //вариант списка объектов своего класса, позволит дополнительно сортировать как угодно
         //например, по убыванию встречаемости слов
-        SeparateClassWay separateClassWay = new SeparateClassWay(words);
+        SeparateClassWay separateClassWay = new SeparateClassWay(WORDS);
         separateClassWay.run();
 
-        //телефонная книга
-        System.out.println("\n----- телефонная книга -----");
+        System.out.println("\n----- телефонная книга, используем ArrayList -----");
         PhoneBook phoneBook = new PhoneBook();
-        Random random = new Random();
         for (int i = 0; i < 20; i++) {
-            phoneBook.add(words[random.nextInt(words.length)],
-                    "" + (4950000000L + new Random().nextInt(10000000)));
+            phoneBook.add(randomWord(), randomPhone());
         }
         for (int i = 0; i < 10; i++) {
-            String word = words[random.nextInt(words.length)];
-            //поиск телефонов перебором
-            System.out.print("brute force -> ");
-            phoneBook.getBruteForce(word);
-            //поиск с использованием indexOf() + lastIndexOf()
-            System.out.print("index&last  -> ");
-            phoneBook.get(word);
+            phoneBook.get(randomWord());
         }
+
+        System.out.println("\n----- телефонная книга, используем TreeMap<String, TreeSet<String>> -----");
+        TreeMapPhoneBook treeMapPhoneBook = new TreeMapPhoneBook();
+        for (int i = 0; i < 20; i++) {
+            treeMapPhoneBook.add(randomWord(), randomPhone());
+        }
+        for (int i = 0; i < 10; i++) {
+            treeMapPhoneBook.get(randomWord());
+        }
+    }
+
+    public static String randomWord() {
+        return WORDS[random.nextInt(WORDS.length)];
+    }
+
+    public static String randomPhone() {
+        return "" + (4950000000L + new Random().nextInt(10000000));
     }
 }

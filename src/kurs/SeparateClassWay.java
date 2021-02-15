@@ -25,12 +25,8 @@ public class SeparateClassWay {
             }
         }
 
-        list.sort(new Comparator<CountedWord>() {
-            @Override
-            public int compare(CountedWord o1, CountedWord o2) {
-                return o1.compareDescendingCounter(o2);
-            }
-        });
+        //сортируем, как нам нужно
+        list.sort(CountedWord::compareDescendingCounter);
 
         System.out.println("\n----- используем ArrayList -----");
         System.out.println("Всего слов в массиве = " + words.length);

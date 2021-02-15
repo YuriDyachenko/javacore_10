@@ -16,11 +16,7 @@ public class HashMapWay {
         Map<String, Integer> uniqueWords = new HashMap<>();
         for (String word: words) {
             Integer count = uniqueWords.get(word);
-            if (count == null) {
-                uniqueWords.put(word, 1);
-            } else {
-                uniqueWords.put(word, count + 1);
-            }
+            uniqueWords.put(word, 1 + (count == null ? 0 : count));
         }
         System.out.println("\n----- используем HashMap<String, Integer> -----");
         System.out.println("Всего слов в массиве = " + words.length);

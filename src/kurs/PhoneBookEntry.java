@@ -19,7 +19,7 @@ public class PhoneBookEntry {
         return phone;
     }
 
-    //переопределяем, чтобы indexOf/lastIndexOf искали только по слову без учета счетчика
+    //переопределяем, чтобы indexOf/lastIndexOf искали только по имени без учета телефона
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

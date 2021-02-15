@@ -1,6 +1,7 @@
 package kurs;
 /*
 класс ТЕЛЕФОННАЯ КНИГА
+используется обычый ArrayList, т.е. все неотсортированно и "очень медленно"
 */
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,8 @@ public class PhoneBook {
         list.add(new PhoneBookEntry(name, phone));
     }
 
-    //поиск телефонов с использованием indexOf() и lastIndexOf()
+    //поиск телефонов с использованием методов indexOf() и lastIndexOf()
+    //ничем не быстрее обычного перебора, потому что эти методы - такой же перебор
     public void get(String name) {
         PhoneBookEntry temp = new PhoneBookEntry(name, "");
         int startIndex = list.indexOf(temp);
@@ -33,24 +35,5 @@ public class PhoneBook {
             stringBuilder.append(temp.getPhone());
         }
         System.out.println(name + ": " + stringBuilder.toString());
-    }
-
-    //поиск телефонов перебором
-    public void getBruteForce(String name) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (PhoneBookEntry phoneBookEntry: list) {
-            if (!name.equals(phoneBookEntry.getName())) {
-                continue;
-            }
-            if (stringBuilder.length() != 0) {
-                stringBuilder.append(", ");
-            }
-            stringBuilder.append(phoneBookEntry.getPhone());
-        }
-        if (stringBuilder.length() == 0) {
-            System.out.println(name + ": телефон не найден");
-        } else {
-            System.out.println(name + ": " + stringBuilder.toString());
-        }
     }
 }
